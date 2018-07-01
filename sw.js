@@ -17,7 +17,7 @@ self.addEventListener('install', event => {
     caches.open(staticCacheName).then(cache => cache.addAll(urlsToCache))
   );
 });
-self.addEventListener('activate', function(event) {
+/*self.addEventListener('activate', function(event) {
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
       return Promise.all(
@@ -29,4 +29,4 @@ self.addEventListener('activate', function(event) {
       );
     })
   );
-});
+});*/
