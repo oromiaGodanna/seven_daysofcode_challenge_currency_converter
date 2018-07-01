@@ -1,3 +1,4 @@
+import {Database} from './idb' ;
 
 function getCurrencies(){
     fetch('https://free.currencyconverterapi.com/api/v5/currencies')
@@ -8,18 +9,32 @@ function getCurrencies(){
             //console.log(myJson.results[`${key}`]);
             currencies += `<option value="${myJson.results[`${key}`].id}">${myJson.results[`${key}`].currencyName}(${myJson.results[`${key}`].id})</option>`;
         }
+        
+        //save to database
+        const arrayOfCurrencies = Object.keys(data.results).sort();
+        Database.saveCurrencyArray('allCurrencies', arrayOfCurrencies);
+        
         currencies += '</select>';
         document.getElementById('changeFrom').innerHTML = currencies;
         document.getElementById('changeTo').innerHTML = currencies;
-       }).catch(err => console.log(err));
-    if ('serviceWorker' in navigator){
-        navigator.serviceWorker.register('sw.js', { insecure: true }).then(request=>{
-        console.log("sw working. created!");
+       }).catch(err => {
+        console.error(
+          `The following error occured while trying to get the list of currencies. ${err}`,
+        );
+        // Get currency exchange rate when the user is offline
+        Database.getCurrencies('allCurrencies').then(arrayOfCurrencies => {
+          if (typeof arrayOfCurrencies === 'undefined') return;
+          const nodeTypeToCreate = 'option';
 
-        }).catch(err => console.log("nop" + err));
-    }
-}
+        arrayOfCurrencies.map(currency => {
+        document.getElementById('changeFrom').appendChild(createNode(nodeTypeToCreate, currency));
+        document.getElementById('changeTo').appendChild(createNode(nodeTypeToCreate, currency));
+    });
+        });
+      });
+  }
 
+    
 function convertCurrency(){
     let from = document.getElementById('changeFrom').value;
     console.log(from);
@@ -27,10 +42,10 @@ function convertCurrency(){
     console.log(to);
     let amount = document.getElementById('amount').value;
     console.log(amount);
-    
+    let query =`${from}_${to}`;
     if (amount) {
        
-        let query =`${from}_${to}`;
+        
         fetch('https://free.currencyconverterapi.com/api/v5/convert?q='+query+'&compact=ultra')
         .then(response => response.json())
         .then(data => {
@@ -39,6 +54,7 @@ function convertCurrency(){
             for (let key in data) {
                 console.log(data[`${key}`]);
                 currencyResult = data[`${key}`];
+                Database.saveCurrencies(query, currencyResult);
                 console.log(currencyResult);
             }
             let total = currencyResult * amount;
@@ -46,7 +62,18 @@ function convertCurrency(){
             let result = Math.round(total * 100) / 100;
             console.log(result)
             document.getElementById('result').innerHTML = `Result : ${result} ${to}`;
-        }).catch(err => console.log(err));
+        }) .catch(err => {
+        console.error(
+          `The following error occured while trying to get the conversion rate. ${err}`,
+        );
+        // Get currency exchange rate when the user is offline
+        Database.getCurrencies(query).then(data => {
+          if (typeof data === 'undefined') return;
+          const convertedResult = data * amount;
+          const convertedRes = Math.round(convertedResult * 100) / 100;
+          document.getElementById('result').innerHTML = `Result : ${convertedRes} ${to}`;
+        });
+      });
     }else{
             document.getElementById('result').innerHTML = `Result : ${0} ${to}`;
     }
