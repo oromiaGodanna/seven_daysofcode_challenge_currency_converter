@@ -1,4 +1,3 @@
-
 let staticCacheName = 'cache-v1';
 let urlsToCache = [
   './index.html',
@@ -28,4 +27,3 @@ self.addEventListener('activate', event => {
     })
 )
 });
-
