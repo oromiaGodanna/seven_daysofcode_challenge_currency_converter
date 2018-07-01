@@ -32,11 +32,7 @@ function convertCurrency(){
        
         let query =`${from}_${to}`;
         fetch('https://free.currencyconverterapi.com/api/v5/convert?q='+query+'&compact=ultra')
-        .then(response => 
-              if(response.status == 404){
-                return new response("this is totally offline get values from the indexed promised db");
-                }
-              return response.json())
+        .then(response => response.json())
         .then(data => {
             console.log(data);
             let currencyResult
@@ -50,7 +46,7 @@ function convertCurrency(){
             let result = Math.round(total * 100) / 100;
             console.log(result)
             document.getElementById('result').innerHTML = `Result : ${result} ${to}`;
-        }).catch(err => console.log(err));
+        }).catch(err => return new Response("This is totlally offline working"));
     }else{
             result.innerHTML = 0;
     }
