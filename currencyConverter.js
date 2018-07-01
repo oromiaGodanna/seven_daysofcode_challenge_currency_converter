@@ -32,7 +32,11 @@ function convertCurrency(){
        
         let query =`${from}_${to}`;
         fetch('https://free.currencyconverterapi.com/api/v5/convert?q='+query+'&compact=ultra')
-        .then(response => response.json())
+        .then(response => 
+              if(response.status == 404){
+                return new response("this is totally offline get values from the indexed promised db");
+                }
+              return response.json())
         .then(data => {
             console.log(data);
             let currencyResult
