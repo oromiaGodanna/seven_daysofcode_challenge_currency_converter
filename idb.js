@@ -7,7 +7,7 @@ const dbPromise = window.indexedDB.open('currencies', 1, upgradeDb => {
       console.error('IndexedDB database could not be created.');
       break;
   }
-});
+});/*
 class Database {
   static getCurrencies(key) {
     return dbPromise
@@ -50,3 +50,4 @@ class Database {
       });
   }
 }
+*/
