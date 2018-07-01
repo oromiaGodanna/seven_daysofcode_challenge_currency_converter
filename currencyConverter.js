@@ -18,7 +18,7 @@ function getCurrencies(){
         document.getElementById('changeTo').innerHTML = currencies;
        }).catch(error => {
         console.error(
-          `The following error occured while trying to get the list of currencies. ${err}`,
+          `The following error occured while trying to get the list of currencies. ${error}`,
         );
         // Get currency exchange rate when the user is offline
         Database.getCurrencies('allCurrencies').then(arrayOfCurrencies => {
@@ -61,9 +61,9 @@ function convertCurrency(){
             let result = Math.round(total * 100) / 100;
             console.log(result)
             document.getElementById('result').innerHTML = `Result : ${result} ${to}`;
-        }) .catch(err => {
+        }) .catch(error => {
         console.error(
-          `The following error occured while trying to get the conversion rate. ${err}`,
+          `The following error occured while trying to get the conversion rate. ${error}`,
         );
         // Get currency exchange rate when the user is offline
         Database.getCurrencies(query).then(data => {
