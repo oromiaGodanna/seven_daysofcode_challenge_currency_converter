@@ -10,7 +10,7 @@ function getCurrencies(){
         }
         
         //save to database
-        const arrayOfCurrencies = Object.keys(data.results).sort();
+        const arrayOfCurrencies = myJson.results[`${key}`].sort();
         Database.saveCurrencyArray('allCurrencies', arrayOfCurrencies);
         
         currencies += '</select>';
