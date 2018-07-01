@@ -17,7 +17,7 @@ function getCurrencies(){
         document.getElementById('changeFrom').innerHTML = currencies;
         document.getElementById('changeTo').innerHTML = currencies;
        }).catch(error => {
-        console.error(
+        console.log(
           `The following error occured while trying to get the list of currencies. ${error}`,
         );
         // Get currency exchange rate when the user is offline
@@ -62,7 +62,7 @@ function convertCurrency(){
             console.log(result)
             document.getElementById('result').innerHTML = `Result : ${result} ${to}`;
         }) .catch(error => {
-        console.error(
+        console.log(
           `The following error occured while trying to get the conversion rate. ${error}`,
         );
         // Get currency exchange rate when the user is offline
