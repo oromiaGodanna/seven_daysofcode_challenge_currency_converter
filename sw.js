@@ -8,8 +8,7 @@ let urlsToCache = [
 console.log(urlsToCache);
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches
-      .match(event.request)
+    caches.match(event.request)
       .then(response => response || fetch(event.request))
   );
 });
@@ -31,3 +30,17 @@ self.addEventListener('install', event => {
     })
   );
 });*/
+self.addEventListener('activate', e => {
+  console.log('[ServiceWorker] Activate');
+  e.waitUntil(
+    caches.keys().then(keyList =>
+      Promise.all(
+        keyList.map(key => {
+          if (key !== staticCacheName) {
+            return caches.delete(key);
+          }
+        }),
+      ),
+    ),
+  );
+});
