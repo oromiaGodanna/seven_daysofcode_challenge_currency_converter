@@ -52,8 +52,8 @@ function convertCurrency(){
             for (let key in data) {
                 console.log(data[`${key}`]);
                 currencyResult = data[`${key}`];
-                Database.saveCurrencies(query, currencyResult);
-                console.log(currencyResult);
+                /*Database.saveCurrencies(query, currencyResult);
+                console.log(currencyResult);*/
             }
             let total = currencyResult * amount;
             console.log(total);
