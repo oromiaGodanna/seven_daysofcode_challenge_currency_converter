@@ -4,21 +4,16 @@ let urlsToCache = [
   './style.css',
   './currencyConverter.js',
 ];
-self.addEventListener('fetch', function(event) {
-
+self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request).then(response => 
-        console.log(response);
-        return response || fetch(event.request);
-    )
+    caches
+      .match(event.request)
+      .then(response => response || fetch(event.request))
   );
 });
-self.addEventListener('install', function(event) {
-
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(staticCacheName).then(function(cache) {
-      return cache.addAll(urlsToCache);
-    })
+    caches.open(cacheName).then(cache => cache.addAll(urlsToCache))
   );
 });
 self.addEventListener('activate', function(event) {
