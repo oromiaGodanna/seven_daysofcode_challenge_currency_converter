@@ -1,5 +1,3 @@
-import idb from 'idb';
-
 const dbPromise = idb.open('currencies', 1, upgradeDb => {
   switch (upgradeDb.oldVersion) {
     case 0:
