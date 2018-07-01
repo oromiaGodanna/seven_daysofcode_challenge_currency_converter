@@ -15,7 +15,7 @@ function getCurrencies(){
         currencies += '</select>';
         document.getElementById('changeFrom').innerHTML = currencies;
         document.getElementById('changeTo').innerHTML = currencies;
-       }).catch(err => {
+       }).catch(error => {
         console.error(
           `The following error occured while trying to get the list of currencies. ${err}`,
         );
