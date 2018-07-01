@@ -1,5 +1,6 @@
 let staticCacheName = 'cache-v1';
 let urlsToCache = [
+  '/'
   './index.html',
   './style.css',
   './currencyConverter.js',
