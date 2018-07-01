@@ -1,9 +1,9 @@
 let staticCacheName = 'cache-v1';
 let urlsToCache = [
-  '/',
-  './index.html',
-  './style.css',
-  './currencyConverter.js',
+  '',
+  '/index.html',
+  '/style.css',
+  '/currencyConverter.js'
 ];
 console.log(urlsToCache);
 self.addEventListener('fetch', event => {
