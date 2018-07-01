@@ -8,8 +8,7 @@ const dbPromise = idb.open('currencies', 1, upgradeDb => {
       break;
   }
 });
-
-export default class Database {
+class Database {
   static getCurrencies(key) {
     return dbPromise
       .then(db => {
