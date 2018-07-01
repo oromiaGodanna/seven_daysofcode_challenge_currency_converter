@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Currency Converter</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <script src="currencyConverter.js"></script>
+        
+    </head>	
+    <body onload="getCurrencies()">
+        <div id = "all">
+            <pre>
+
+
+            </pre>
+
+            <div  id = "title">
+                <h1>Currency Converter</h1>
+
+            </div>
+            
+                
+           
+            <form action="/action_page.php" method="get">
+                <br /><div id = "result">
+                    
+                </div><br />
+
+                <div id = "amountDiv">
+                    Amount:<br/>
+                    <input type="number" name="amount" id="amount" required><br /><br /><br />
+                </div > 
+
+                <div id = "from">
+                    <label>From: <select id="changeFrom" required> </select></label>      
+                </div>
+
+                <div id = "to">
+                    <label>To: <select id="changeTo" required> </select></label>
+                </div>
+            </form> 
+                <div id="button"></div>
+                       <br /><br /><input id="submitBtn" type="submit" value="Convert" onclick="convertCurrency()"/>
+                       <pre>
+                        
+                        
+    
+                </pre>               
+                    </div>
+            
+            
+        </div>        
+    </body>
+</html>	 

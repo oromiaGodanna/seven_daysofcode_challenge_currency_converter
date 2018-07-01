@@ -1,0 +1,64 @@
+body{
+    font: 15px/1.4em georgia, palatino, "book antiqua", "palatino linotype", sans-serif;
+    text-decoration: none;
+    align-content: center;
+    color: white;
+}
+#all{
+    background-color: rgb(5, 6, 8);
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 10%;
+   
+}
+
+#title{
+    font-style: italic; 
+    font-size: 15px;
+    text-align: center;
+}
+#result{
+    
+    padding-left: 35%;
+    padding-right: 5%;
+    color: white;
+}
+input
+{
+   width: 100%;
+   padding-left: 2%;
+   padding-right: 2%;
+}
+form{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+select{
+    width:50%;
+}
+#from{
+    float: left;
+    width: 48%;
+}
+#to{
+    float: left;
+    width: 48%;
+
+}
+#button{
+    clear: both;
+    
+}
+#submitBtn{
+    background-color: #008CBA; 
+    border: none;
+    color: white;
+    padding: 13px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width:90%;
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
