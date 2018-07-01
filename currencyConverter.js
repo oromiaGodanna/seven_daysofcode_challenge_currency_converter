@@ -46,7 +46,7 @@ function convertCurrency(){
             let result = Math.round(total * 100) / 100;
             console.log(result)
             document.getElementById('result').innerHTML = `Result : ${result} ${to}`;
-        }).catch(err => return new Response("This is totlally offline working."));
+        }).catch(err => console.log(err));
     }else{
             result.innerHTML = 0;
     }
