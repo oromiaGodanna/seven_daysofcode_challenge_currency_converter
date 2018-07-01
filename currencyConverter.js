@@ -30,7 +30,14 @@ function getCurrencies(){
     });
         });*/
       });
-  }
+        if ('serviceWorker' in navigator){
+        navigator.serviceWorker.register('sw.js').then(request=>{
+        console.log("sw working. created!");
+
+        }).catch(err => console.log("nop" + err));
+    }
+}
+
 
     
 function convertCurrency(){
