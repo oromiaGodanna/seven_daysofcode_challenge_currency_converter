@@ -48,6 +48,6 @@ function convertCurrency(){
             document.getElementById('result').innerHTML = `Result : ${result} ${to}`;
         }).catch(err => console.log(err));
     }else{
-            document.getElementById('result').innerHTML = 0;
+            document.getElementById('result').innerHTML = `Result : ${0} ${to}`;
     }
 }
