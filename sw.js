@@ -13,9 +13,12 @@ self.addEventListener('fetch', function(event) {
     )
   );
 });
-self.addEventListener('install', event => {
+self.addEventListener('install', function(event) {
+
   event.waitUntil(
-    caches.open(staticCacheName).then(cache => cache.addAll(urlsToCache))
+    caches.open(staticCacheName).then(function(cache) {
+      return cache.addAll(urlsToCache);
+    })
   );
 });
 self.addEventListener('activate', function(event) {
