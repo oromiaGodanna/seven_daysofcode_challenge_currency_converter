@@ -1,6 +1,7 @@
 let staticCacheName = 'cache-v1';
 let urlsToCache = [
   '/',
+  '/seven_daysofcode_challenge_currency_converter/',
   './index.html',
   './style.css',
   './currencyConverter.js',
