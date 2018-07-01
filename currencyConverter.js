@@ -1,4 +1,4 @@
-import Database from './idb' ;
+
 function getCurrencies(){
     fetch('https://free.currencyconverterapi.com/api/v5/currencies')
     .then(response => response.json())
