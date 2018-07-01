@@ -27,7 +27,7 @@ function convertCurrency(){
     console.log(to);
     let amount = document.getElementById('amount').value;
     console.log(amount);
-    let result = document.getElementById('result');
+    
     if (amount) {
        
         let query =`${from}_${to}`;
@@ -48,6 +48,6 @@ function convertCurrency(){
             document.getElementById('result').innerHTML = `Result : ${result} ${to}`;
         }).catch(err => console.log(err));
     }else{
-            result.innerHTML = 0;
+            document.getElementById('result').innerHTML = 0;
     }
 }
