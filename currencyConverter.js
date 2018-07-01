@@ -27,8 +27,8 @@ function getCurrencies(){
         arrayOfCurrencies.map(currency => {
         document.getElementById('changeFrom').appendChild(createNode(nodeTypeToCreate, currency));
         document.getElementById('changeTo').appendChild(createNode(nodeTypeToCreate, currency));
-    });*/
-        });
+    });
+        });*/
       });
   }
 
