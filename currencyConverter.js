@@ -5,7 +5,7 @@ function getCurrencies(){
     .then( myJson => {
        let currencies = ' <select name="" >';
         for (let key in myJson.results) {
-            //console.log(myJson.results[`${key}`]);
+            console.log(myJson.results[`${key}`]);
             currencies += `<option value="${myJson.results[`${key}`].id}">${myJson.results[`${key}`].currencyName}(${myJson.results[`${key}`].id})</option>`;
         }
         
@@ -17,9 +17,8 @@ function getCurrencies(){
         document.getElementById('changeFrom').innerHTML = currencies;
         document.getElementById('changeTo').innerHTML = currencies;
        }).catch(error => {
-        console.log(
-          `The following error occured while trying to get the list of currencies. ${error}`,
-        );
+        console.log(`The following error occured while trying to get the list of currencies. ${error}`);
+        
         // Get currency exchange rate when the user is offline
         Database.getCurrencies('allCurrencies').then(arrayOfCurrencies => {
           if (typeof arrayOfCurrencies === 'undefined') return;
