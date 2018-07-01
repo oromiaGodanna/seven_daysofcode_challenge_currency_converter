@@ -5,6 +5,7 @@ let urlsToCache = [
   './style.css',
   './currencyConverter.js',
 ];
+console.log(urlsToCache);
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches
