@@ -10,8 +10,8 @@ function getCurrencies(){
         }
         
         //save to database
-        const arrayOfCurrencies = myJson.results[`${key}`].sort();
-        Database.saveCurrencyArray('allCurrencies', arrayOfCurrencies);
+        /*const arrayOfCurrencies = myJson.results[`${key}`].sort();
+        Database.saveCurrencyArray('allCurrencies', arrayOfCurrencies);*/
         
         currencies += '</select>';
         document.getElementById('changeFrom').innerHTML = currencies;
@@ -20,13 +20,13 @@ function getCurrencies(){
         console.log(`The following error occured while trying to get the list of currencies. ${error}`);
         
         // Get currency exchange rate when the user is offline
-        Database.getCurrencies('allCurrencies').then(arrayOfCurrencies => {
+        /*Database.getCurrencies('allCurrencies').then(arrayOfCurrencies => {
           if (typeof arrayOfCurrencies === 'undefined') return;
           const nodeTypeToCreate = 'option';
 
         arrayOfCurrencies.map(currency => {
         document.getElementById('changeFrom').appendChild(createNode(nodeTypeToCreate, currency));
-        document.getElementById('changeTo').appendChild(createNode(nodeTypeToCreate, currency));
+        document.getElementById('changeTo').appendChild(createNode(nodeTypeToCreate, currency));*/
     });
         });
       });
@@ -65,12 +65,12 @@ function convertCurrency(){
           `The following error occured while trying to get the conversion rate. ${error}`,
         );
         // Get currency exchange rate when the user is offline
-        Database.getCurrencies(query).then(data => {
+        /*Database.getCurrencies(query).then(data => {
           if (typeof data === 'undefined') return;
           const convertedResult = data * amount;
           const convertedRes = Math.round(convertedResult * 100) / 100;
           document.getElementById('result').innerHTML = `Result : ${convertedRes} ${to}`;
-        });
+        });*/
       });
     }else{
             document.getElementById('result').innerHTML = `Result : ${0} ${to}`;
